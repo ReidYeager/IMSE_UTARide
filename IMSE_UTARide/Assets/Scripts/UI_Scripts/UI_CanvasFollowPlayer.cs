@@ -37,6 +37,7 @@ public class UI_CanvasFollowPlayer : MonoBehaviour
         gui.rotation = player.rotation; 
         foreach (GameObjectUI obj in UICanvasGameObject)
         {
+            UI_ZeroOutTransform(obj.canvasGO.transform);
             UI_SetupGUITransform(obj);
         }
         isUICentered = true;
@@ -50,6 +51,13 @@ public class UI_CanvasFollowPlayer : MonoBehaviour
             UI_Follow();
     }
 
+    // Zeros out the given transform
+    void UI_ZeroOutTransform(Transform t)
+    {
+        t.localPosition = Vector3.zero;
+        t.localRotation = Quaternion.Euler(0f, 0f, 0f);
+    }
+
     /* Description: Provide initialized variables with a value.
      */
     public void UI_SetupGUITransform(GameObjectUI g)
@@ -60,6 +68,7 @@ public class UI_CanvasFollowPlayer : MonoBehaviour
             // Set distance away from the pivot (player)
             rect.localPosition = g.position;
             rect.localScale = g.scale;
+            Debug.Log("Working");
         }
     }
 

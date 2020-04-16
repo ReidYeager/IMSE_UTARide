@@ -34,6 +34,14 @@ public class UI_CanvasFollowObject: MonoBehaviour
     {
     }
 
+    private void FixedUpdate()
+    {
+        foreach (GameObjectUI obj in UICanvasGameObject)
+        {
+            UI_SetTransformToObject(obj);
+        }
+    }
+
     // Zeros out the given transform
     void UI_ZeroOutTransform(Transform t)
     {
