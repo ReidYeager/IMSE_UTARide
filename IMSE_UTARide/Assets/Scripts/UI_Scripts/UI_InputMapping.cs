@@ -9,13 +9,14 @@ using UnityEngine;
 
 public class UI_InputMapping 
 {
-    // Keyboard and Mouse Bindings
+    // Keyboard mappings
     public static KeyCode ToggleMenuVisibility = KeyCode.Tab;
 
+    // Mouse mappings
     public static float VerticalInput = Input.GetAxis("Vertical");
     public static float HorizontalInput = Input.GetAxis("Horizontal");
 
-    // Oculus Mappings
+    // Oculus mappings
     public static OVRInput.Button OVR_ToggleMenuVisibilty = OVRInput.Button.Start;
     public static OVRInput.Button OVR_A = OVRInput.Button.One;
     public static OVRInput.Button OVR_B = OVRInput.Button.Two;

@@ -4,6 +4,7 @@
  * ------------------------
  * Purpose: Attach to a menu UI object to control its appearance/ functions and its submenus.
  * Changelog:
+ * NOTE: not yet fully implemented
  */
 using System.Collections;
 using System.Collections.Generic;

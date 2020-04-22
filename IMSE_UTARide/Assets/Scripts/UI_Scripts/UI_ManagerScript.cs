@@ -2,7 +2,8 @@
  * Contributors:
  * Date: March 24, 2020
  * ------------------------
- * Purpose: Control the UI elements functions, appearance, and to maintain them in a controlled environment.
+ * Purpose: Control the UI elements functions, appearance, and to maintain them in a single 
+ * controlled environment.
  * NOTE: Needs to be refactored
  */
 
@@ -16,7 +17,8 @@ public class UI_ManagerScript : MonoBehaviour
     //The GameObject that holds all UI elements
     public GameObject gui;
 
-    // maxRotation, minRotation: Used to quaternions for how far the user can tilt their UI for viewability depending on their location
+    // maxRotation, minRotation: Used to quaternions for how far the user can tilt their UI for
+    // viewability depending on their location
     // maxTilt, minTilt: Used to set the bounds for how far the UI may tilt
     [Header("UI Settings")]
     private Quaternion maxRotation, minRotation;
@@ -24,7 +26,6 @@ public class UI_ManagerScript : MonoBehaviour
     public float maxTilt = 20f;
     public float minTilt = -20f;
 
-    // Start is called before the first frame update
     void Start()
     {
     }
