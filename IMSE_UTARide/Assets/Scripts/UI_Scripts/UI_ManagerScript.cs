@@ -26,8 +26,21 @@ public class UI_ManagerScript : MonoBehaviour
     public float maxTilt = 20f;
     public float minTilt = -20f;
 
+    public GameObject Homescreen;
+    public GameObject MapApp;
+
     void Start()
     {
+        Canvas mapCanvas = MapApp.GetComponent<Canvas>();
+        if (mapCanvas != null)
+        {
+            mapCanvas.enabled = false;
+        }
+        Canvas homeCanvas = Homescreen.GetComponent<Canvas>();
+        if (homeCanvas != null)
+        {
+            homeCanvas.enabled = true;
+        }
     }
 
     void Update()
@@ -36,5 +49,33 @@ public class UI_ManagerScript : MonoBehaviour
         UI_UserInput.UI_ToggleMenuVisibity(gui);
         UI_UserInput.UI_OVR_ToggleMenuVisibity(gui);
         UI_UserInput.UI_OVR_TiltMenu(gui, maxTilt, minTilt);
+    }
+
+    public void OpenMapApp()
+    {
+        Canvas mapCanvas = MapApp.GetComponent<Canvas>();
+        if (mapCanvas != null)
+        {
+            mapCanvas.enabled = true;
+        }
+        Canvas homeCanvas = Homescreen.GetComponent<Canvas>();
+        if (homeCanvas != null)
+        {
+            homeCanvas.enabled = false;
+        }
+    }
+
+    public void ReturnToHomeScreenFromMap()
+    {
+        Canvas mapCanvas = MapApp.GetComponent<Canvas>();
+        if (mapCanvas != null)
+        {
+            mapCanvas.enabled = false;
+        }
+        Canvas homeCanvas = Homescreen.GetComponent<Canvas>();
+        if (homeCanvas != null)
+        {
+            homeCanvas.enabled = true;
+        }
     }
 }
