@@ -1,22 +1,46 @@
 fileFormatVersion: 2
-guid: 8257120e440dc5741a747e7a1ba04eac
+guid: 75fac0ffc516dac4fb20ed28a0b923fd
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
-    2100000: defaultMat
-    2300000: default
-    3300000: default
-    4300000: default
-  externalObjects: {}
+    100000: //RootNode
+    100002: Object003
+    100004: Object004
+    100006: Object006
+    100008: Object007
+    100010: Object008
+    400000: //RootNode
+    400002: Object003
+    400004: Object004
+    400006: Object006
+    400008: Object007
+    400010: Object008
+    2300000: Object003
+    2300002: Object004
+    2300004: Object006
+    2300006: Object007
+    2300008: Object008
+    3300000: Object003
+    3300002: Object004
+    3300004: Object006
+    3300006: Object007
+    3300008: Object008
+    4300000: Object003
+    4300002: Object004
+    4300004: Object006
+    4300006: Object007
+    4300008: Object008
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 323900a1a27ac9c4fbf2f8c075909a39, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -46,10 +70,10 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    importVisibility: 1
+    importVisibility: 0
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -57,7 +81,7 @@ ModelImporter:
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    indexFormat: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -69,8 +93,8 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 4
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   importAnimation: 1
