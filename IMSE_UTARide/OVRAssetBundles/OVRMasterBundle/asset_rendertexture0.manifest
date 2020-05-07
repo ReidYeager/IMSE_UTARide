@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1337071762
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8d1ab4883348c275b5c075a917d4e352
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 89010fa122ffffe6344faa21dd7249a1
+HashAppended: 0
+ClassTypes:
+- Class: 84
+  Script: {instanceID: 0}
+Assets:
+- Assets/Art/Textures/UI_Textures/MinimapRenderTexture.renderTexture
+Dependencies: []

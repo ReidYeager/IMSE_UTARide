@@ -1,0 +1,41 @@
+ManifestFileVersion: 0
+CRC: 67067473
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 125c55fa8624c2c3f54d90f33def0562
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: fe397485c3cec1106b49e9ff95e8f8a2
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Art/Textures/UI_Textures/Materials/bubble_wallpaper.mat
+- Assets/Art/Models/Indoor/Furniture_ges1/glass_table/Materials/12 - Default.mat
+- Assets/Art/Textures/Indoor/Materials/plaster.mat
+- Assets/Art/Models/Indoor/Furniture_ges1/kiti/Materials/wall.mat
+- Assets/Art/Models/Indoor/Furniture_ges1/bed1/Materials/bed1.mat
+- Assets/Art/Models/Indoor/Window/models/Materials/window.mat
+- Assets/Art/Models/Indoor/Furniture_ges1/tv/Materials/tv_tex.mat
+- Assets/Art/Models/Indoor/Apartment_Door/Materials/SimpleDoor_Mat.mat
+- Assets/Art/Models/Indoor/Apartment_Door/Models/Materials/SimpleDoor_SimpleDoor_MainDoor_LOD0SG1.mat
+- Assets/Art/Models/Indoor/WoodenChair/Materials/WoodenChair-chair.mat
+- Assets/Art/Models/Indoor/Furniture_ges1/speaker/Materials/bx5.mat
+- Packages/com.unity.probuilder/Content/Resources/Materials/ProBuilderDefault.mat
+- Assets/Packages/Oculus/SampleFramework/Core/CustomHands/Materials/Hands_solid.mat
+- Assets/Art/Models/Indoor/Window/models/Materials/wall.mat
+- Assets/Art/Models/Indoor/Furniture_ges1/glass_table/Materials/18 - Default.mat
+- Assets/Art/Models/Indoor/Apartment_Door/Models/Materials/SimpleDoor_SimpleDoor_MainDoor_LOD2SG1.mat
+- Assets/Art/Models/Indoor/Window/models/Materials/window_glass.mat
+- Assets/Art/Models/Indoor/Furniture_ges1/interior/Materials/floor.mat
+Dependencies:
+- F:/Projects/Unity/IMSE_UTARide/IMSE_UTARide/OVRAssetBundles/OVRMasterBundle/asset_png0
+- F:/Projects/Unity/IMSE_UTARide/IMSE_UTARide/OVRAssetBundles/OVRMasterBundle/asset_jpg0
+- F:/Projects/Unity/IMSE_UTARide/IMSE_UTARide/OVRAssetBundles/OVRMasterBundle/asset_tga0
+- F:/Projects/Unity/IMSE_UTARide/IMSE_UTARide/OVRAssetBundles/OVRMasterBundle/asset_shader0

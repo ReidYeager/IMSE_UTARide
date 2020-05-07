@@ -1,0 +1,108 @@
+ManifestFileVersion: 0
+CRC: 1199505919
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3146d3f0e0306bdba2edeaab5a8667d9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 53572c476a0b5d6480154000067c47c7
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 109
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: b7f99b5209bd86441a74f3b0c7aab951, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ad074644ff568a14187a3690cfbd7534, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e90911e410742a1498a167540c7865bf, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 00f6c0d7b5a00aa4a8d38a09a0480032, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 20553fac56ec59645857c0732b787431, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c9da270df5147d24597cc106058c1fa7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e7418c7dd8f977d4e969202d3fa7e926, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+Assets:
+- Assets/Packages/Oculus/Avatar/Resources/FallbackTextures/fallback_diffuse_roughness_2048.png
+- Assets/Packages/Oculus/Avatar/Resources/FallbackTextures/fallback_diffuse_roughness_256.png
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/HandLeftIcon.png
+- Assets/Packages/SteamVR/Resources/SteamVR_Fade.shader
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/handmask.png
+- Assets/Packages/Oculus/Avatar/Resources/Materials/Version1.5/Avatar_PC_SingleComponent.shader
+- Assets/Packages/Oculus/VR/Resources/OVRMRUnlitTransparent.shader
+- Assets/Packages/Oculus/Avatar/Resources/FallbackTextures/fallback_normal_2048.png
+- Assets/Packages/Oculus/VR/Resources/OVRMRChromaKey.cginc
+- Assets/Packages/SteamVR/Resources/SteamVR_ClearAll.shader
+- Assets/Packages/SteamVR/Resources/SteamVR_ExternalCamera.prefab
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/BlenderBehaviour_Boolean_Icon.png
+- Assets/Packages/Oculus/Avatar/Resources/Materials/Version1.5/Avatar_Mobile_Loader.shader
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/handmask_Palm.png
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/HandRightIcon.png
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/handmask_Thumb.png
+- Assets/Packages/Oculus/VR/Resources/Cubemap Blit.shader
+- Assets/Packages/Oculus/VR/Resources/OVRMRUnlit.shader
+- Assets/Packages/SteamVR_Resources/Resources/SteamVR_Settings.asset
+- Assets/Packages/SteamVR/Resources/ReferencePose_OpenHand.asset
+- Assets/Packages/Oculus/Avatar/Resources/Materials/AvatarSurfaceShaderSelfOccluding.shader
+- Assets/Packages/Oculus/VR/Resources/Unlit Transparent Color.shader
+- Assets/Packages/Oculus/Avatar/Resources/Materials/AvatarSurfaceShaderPBS.shader
+- Assets/Packages/SteamVR/Resources/ReferencePose_Fist.asset
+- Assets/Packages/Oculus/VR/Resources/OVRMRCameraFrameLit.shader
+- Assets/Packages/Oculus/Avatar/Resources/Materials/Version1.5/Avatar_Mobile_CombinedMesh.shader
+- Assets/Packages/Oculus/Avatar/Resources/Materials/Expressive/Avatar_Mobile_CombinedMeshExpressive.shader
+- Assets/Resources/ONSPSettings.asset
+- Assets/Packages/Oculus/VR/Resources/Underlay Transparent Occluder.shader
+- Assets/Packages/Oculus/VR/Resources/Texture2D Blit.shader
+- Assets/Packages/Oculus/Avatar/Resources/Materials/Expressive/Avatar_PC_SingleComponentExpressive.shader
+- Assets/Packages/Oculus/Avatar/Resources/Materials/AvatarPBRV2Simple.shader
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/handmask_Pinky.png
+- Assets/Packages/Oculus/Avatar/Resources/FallbackTextures/fallback_normal_256.png
+- Assets/Resources/OVRBuildConfig.asset
+- Assets/Packages/Oculus/Avatar/Resources/Materials/Expressive/Avatar_Mobile_SingleComponentExpressive.shader
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/BlenderBehaviour_Manual_Icon.png
+- Assets/Packages/SteamVR/Resources/ReferencePose_BindPose.asset
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/handmask_Ring.png
+- Assets/Packages/Oculus/VR/Resources/OVRMRCameraFrame.shader
+- Assets/Packages/Oculus/Avatar/Resources/Materials/AvatarSurfaceShaderPBSV2.shader
+- Assets/Packages/SteamVR/Resources/SteamVR_SphericalProjection.shader
+- Assets/Packages/SteamVR/Resources/SteamVR_AlphaOut.shader
+- Assets/Packages/Oculus/Avatar/Resources/FallbackTextures/fallback_diffuse_roughness_1024.png
+- Assets/Packages/Oculus/Avatar/Resources/Materials/Version1.5/Avatar_Mobile_SingleComponent.shader
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/handmask_Middle.png
+- Assets/Packages/Oculus/Avatar/Resources/Materials/AvatarMaterialStateShader.cginc
+- Assets/Packages/Oculus/Avatar/Resources/Materials/Expressive/AvatarEyeLens.shader
+- Assets/Packages/Oculus/Avatar/Resources/Materials/AvatarSurfaceShader.shader
+- Assets/Packages/SteamVR/Resources/SteamVR_ColorOut.shader
+- Assets/Packages/Oculus/Avatar/Resources/FallbackTextures/fallback_normal_1024.tif
+- Assets/Packages/Oculus/VR/Resources/Underlay Impostor.shader
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/handmask_Index.png
+- Assets/Packages/SteamVR/Input/Editor/Resources/Icons/BlenderBehaviour_Analog_Icon.png
+- Assets/Packages/SteamVR/Resources/SteamVR_HoverHighlight.mat
+Dependencies: []

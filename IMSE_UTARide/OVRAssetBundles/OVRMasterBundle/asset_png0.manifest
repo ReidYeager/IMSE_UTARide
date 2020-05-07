@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 3429614895
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0ce5e7ed14aa84409ac90abbf17fb475
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ea5a42e0fd8ea905efa7aa926a3b8944
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Art/Models/Indoor/Window/models/textures/window_MetallicSmoothness.png
+- Assets/Art/Textures/UI_Textures/map_icon.png
+- Assets/Art/Models/Indoor/Window/models/textures/window_AlbedoTransparency.png
+- Assets/Art/Models/Indoor/Window/models/textures/Brick_normal.png
+- Assets/Art/Models/Indoor/Apartment_Door/Textures/SimpleDoor/Simple Door LOD0_LOD0_MetallicSmoothness.png
+- Assets/Art/Models/Indoor/Furniture_ges1/interior/floor - Copy.png
+- Assets/Art/Models/Indoor/Apartment_Door/Textures/SimpleDoor/Simple Door LOD0_LOD0_Normal.png
+- Packages/com.unity.probuilder/Content/Resources/Textures/GridBox_Default.png
+- Assets/Art/Models/Indoor/Furniture_ges1/interior/floor.png
+- Assets/Art/Models/Indoor/Apartment_Door/Textures/SimpleDoor/Simple Door LOD0_LOD0_AO.png
+- Assets/Art/Models/Indoor/Furniture_ges1/tv/tv_tex_normal.png
+- Assets/Art/Models/Indoor/Window/models/textures/brick_Albedo.png
+- Assets/Art/Models/Indoor/Apartment_Door/Textures/SimpleDoor/Simple Door LOD0_LOD0_AlbedoTransparency.png
+- Assets/Art/Models/Indoor/Window/models/textures/window_Normal.png
+Dependencies: []

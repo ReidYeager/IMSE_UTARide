@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 911848982
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3aea9643b96ad828176cb175829f671b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5275c8a661009fa5c49c1181e5cf3763
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 89
+  Script: {instanceID: 0}
+Assets:
+- Assets/Art/Models/Indoor/Furniture_ges1/bed1/bed1.jpg
+- Assets/Art/Models/Indoor/Furniture_ges1/glass_table/refl.jpg
+- Assets/Art/Textures/UI_Textures/bubble_wallpaper.jpg
+- Assets/Art/Models/Indoor/Furniture_ges1/kiti/wall.jpg
+- Assets/Art/Models/Indoor/Furniture_ges1/bed1/bed1normal.jpg
+- Assets/Art/Textures/Indoor/plaster.jpg
+Dependencies: []
