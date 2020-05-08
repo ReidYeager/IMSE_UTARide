@@ -21,26 +21,20 @@ public class UI_ManagerScript : MonoBehaviour
     // viewability depending on their location
     // maxTilt, minTilt: Used to set the bounds for how far the UI may tilt
     [Header("UI Settings")]
-    private Quaternion maxRotation, minRotation;
-    [Tooltip("How far the canvas may rotate back or forwards")]
-    public float maxTilt = 20f;
-    public float minTilt = -20f;
+    //private Quaternion maxRotation, minRotation;
+    //[Tooltip("How far the canvas may rotate back or forwards")]
+    //public float maxTilt = 20f;
+    //public float minTilt = -20f;
 
-    public GameObject Homescreen;
-    public GameObject MapApp;
+    // Use this list to store the GameObjects containing canvases of apps to load and the home
+    // screen.
+    public List<GameObject> UIs = new List<GameObject>();
 
     void Start()
     {
-        Canvas mapCanvas = MapApp.GetComponent<Canvas>();
-        if (mapCanvas != null)
-        {
-            mapCanvas.enabled = false;
-        }
-        Canvas homeCanvas = Homescreen.GetComponent<Canvas>();
-        if (homeCanvas != null)
-        {
-            homeCanvas.enabled = true;
-        }
+        // Hide every UI at startup except the first canvas UI. Don't want to draw everything
+        // on start up for performance reasons.
+        CloseApp();
     }
 
     void Update()
@@ -48,34 +42,50 @@ public class UI_ManagerScript : MonoBehaviour
         // User controls
         UI_UserInput.UI_ToggleMenuVisibity(gui);
         UI_UserInput.UI_OVR_ToggleMenuVisibity(gui);
-        UI_UserInput.UI_OVR_TiltMenu(gui, maxTilt, minTilt);
+        //UI_UserInput.UI_OVR_TiltMenu(gui, maxTilt, minTilt);
     }
 
-    public void OpenMapApp()
+    /* Description: To be used by a button. Using a list provided, enables the selected GameObject
+     * to be visible.
+     * Parameters: 
+     *  appIndex : int
+     *      An integer used to index into the list "UIs". This is the canvas gameobjec to enable.
+     * Return(s): nothing
+     */
+    public void OpenApp(int appIndex)
     {
-        Canvas mapCanvas = MapApp.GetComponent<Canvas>();
-        if (mapCanvas != null)
+        for (int i = 0; i < UIs.Count; i++)
         {
-            mapCanvas.enabled = true;
-        }
-        Canvas homeCanvas = Homescreen.GetComponent<Canvas>();
-        if (homeCanvas != null)
-        {
-            homeCanvas.enabled = false;
+            Canvas canvas = UIs[i].GetComponent<Canvas>();
+            if (i == appIndex && canvas != null)
+            {
+                canvas.enabled = true;
+            }
+            else if (canvas != null)
+            {
+                canvas.enabled = false;
+            }
         }
     }
 
-    public void ReturnToHomeScreenFromMap()
+    /* Description: To be used by a button. Disables all the UI GameObjects except the first one in 
+     * the list. Note: the first canvas should be the home screen.
+     * Parameters: nothing
+     * Return(s): nothing
+     */
+    public void CloseApp()
     {
-        Canvas mapCanvas = MapApp.GetComponent<Canvas>();
-        if (mapCanvas != null)
+        for (int i = 0; i < UIs.Count; i++)
         {
-            mapCanvas.enabled = false;
-        }
-        Canvas homeCanvas = Homescreen.GetComponent<Canvas>();
-        if (homeCanvas != null)
-        {
-            homeCanvas.enabled = true;
+            Canvas canvas = UIs[i].GetComponent<Canvas>();
+            if (i == 0 && canvas != null)
+            {
+                canvas.enabled = true;
+            }
+            else if (canvas != null)
+            {
+                canvas.enabled = false;
+            }
         }
     }
 }
