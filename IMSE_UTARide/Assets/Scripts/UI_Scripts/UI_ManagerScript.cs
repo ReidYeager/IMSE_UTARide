@@ -4,7 +4,10 @@
  * ------------------------
  * Purpose: Control the UI elements functions, appearance, and to maintain them in a single 
  * controlled environment.
- * NOTE: Needs to be refactored
+ * 
+ * Changes:
+ * May 18th, 2020:
+ *  - Removed functions such as user controls for tilt, hiding menus, and update documentation.
  */
 
 using System.Collections;
@@ -17,14 +20,7 @@ public class UI_ManagerScript : MonoBehaviour
     //The GameObject that holds all UI elements
     public GameObject gui;
 
-    // maxRotation, minRotation: Used to quaternions for how far the user can tilt their UI for
-    // viewability depending on their location
-    // maxTilt, minTilt: Used to set the bounds for how far the UI may tilt
     [Header("UI Settings")]
-    //private Quaternion maxRotation, minRotation;
-    //[Tooltip("How far the canvas may rotate back or forwards")]
-    //public float maxTilt = 20f;
-    //public float minTilt = -20f;
 
     // Use this list to store the GameObjects containing canvases of apps to load and the home
     // screen.
@@ -35,14 +31,6 @@ public class UI_ManagerScript : MonoBehaviour
         // Hide every UI at startup except the first canvas UI. Don't want to draw everything
         // on start up for performance reasons.
         CloseApp();
-    }
-
-    void Update()
-    {
-        // User controls
-        UI_UserInput.UI_ToggleMenuVisibity(gui);
-        UI_UserInput.UI_OVR_ToggleMenuVisibity(gui);
-        //UI_UserInput.UI_OVR_TiltMenu(gui, maxTilt, minTilt);
     }
 
     /* Description: To be used by a button. Using a list provided, enables the selected GameObject
