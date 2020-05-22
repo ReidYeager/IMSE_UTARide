@@ -7,5 +7,5 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Indoor.unity
-    guid: 969b1a624850f0c45aa10a401b4f3092
+    guid: 8dcba300d906e6644b36e4d857d4588a
   m_configObjects: {}
