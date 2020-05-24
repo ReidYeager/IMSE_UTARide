@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class DoorController : MonoBehaviour
 {
     public bool keyNeeded = false;              //Is key needed for the door
-    public bool gotKey;                  //Has the player acquired key
+    public bool gotKey;                         //Has the player acquired key
     public GameObject keyGameObject;            //If player has Key,  assign it here
     public GameObject txtToDisplay;             //Display the information about how to close/open the door
 
