@@ -21,7 +21,13 @@ public class UI_CanvasFollowObject : MonoBehaviour
     [Tooltip("Set UI local angle relative to object")]
     public Vector3 rotation;
 
+    [Header("Relative Scaling")]
+    [Tooltip("Set the scale of the UI object")]
+    public Vector3 scale;
+
     [Header("GameObjects")]
+    public Canvas indoorCanvas;
+    public Canvas outdoorCanvas;
     [Tooltip("The parent object the UI will follow")]
     public GameObject objectToFollow;
     void Start()
@@ -33,20 +39,30 @@ public class UI_CanvasFollowObject : MonoBehaviour
         // Offset the canvas away from the parent object. Use position and rotation vectors
         // to transform the canvas into the appropriate position for the user to interact
         // with the UI on the object-to-follow
-        RectTransform canvas_rect = this.transform.GetChild(0).GetComponent<RectTransform>();
-        canvas_rect.localPosition = position;
-        canvas_rect.localRotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+        float scale = 0.001f * 0.75f;
+        RectTransform canvasRectIndoor = indoorCanvas.GetComponent<RectTransform>();
+        canvasRectIndoor.localPosition = position;
+        canvasRectIndoor.localRotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+        canvasRectIndoor.localScale = new Vector3(scale, scale, scale);
+
+        RectTransform canvasRectOutdoor = outdoorCanvas.GetComponent<RectTransform>();
+        canvasRectOutdoor.localPosition = position;
+        canvasRectOutdoor.localRotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+        canvasRectOutdoor.localScale = new Vector3(scale, scale, scale);
     }
 
     private void FollowObject()
     {
         // By attaching the parent object to the object-to-follow, the parent object will always 
         // follow the object-to-follow and follow the same orietnation
-        this.transform.SetParent(objectToFollow.transform, false);
+        indoorCanvas.transform.SetParent(objectToFollow.transform, false);
+        outdoorCanvas.transform.SetParent(objectToFollow.transform, false);
 
         // Set the absolute position of the parent object to the object-to-follow so that it is
         // centered to on it and has the same orientation
-        this.transform.position = objectToFollow.transform.position;
-        this.transform.rotation = objectToFollow.transform.rotation;
+        indoorCanvas.transform.position = objectToFollow.transform.position;
+        indoorCanvas.transform.rotation = objectToFollow.transform.rotation;
+        outdoorCanvas.transform.position = objectToFollow.transform.position;
+        outdoorCanvas.transform.rotation = objectToFollow.transform.rotation;
     }
 }

@@ -73,10 +73,10 @@ public class WorldState : MonoBehaviour
     {
         currentWeather = _weather;
         Debug.Log($"Current weather now {currentWeather}");
-    }
+    }   
 
-    // TIME
-    // ==============================================
+// TIME
+// ==============================================
 
     public void SetTimeOfDay(float _time)
     {
