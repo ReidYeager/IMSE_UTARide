@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -144,6 +144,8 @@ MonoBehaviour:
   worldWeatherPalettes:
   - {fileID: 11400000, guid: 4efdf6f5fd2754f49bab0049e939a61e, type: 2}
   - {fileID: 11400000, guid: 2f771499ab9c6ca4fb3367cbe6829577, type: 2}
+  - {fileID: 11400000, guid: 354ce98bd2ff5a14ba3a42c8145bd7a9, type: 2}
+  currentTime: 3
 --- !u!4 &1629342900
 Transform:
   m_ObjectHideFlags: 0

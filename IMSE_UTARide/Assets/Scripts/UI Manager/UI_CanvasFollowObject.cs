@@ -1,8 +1,9 @@
 ﻿/* Author: Jonah Bui
  * Contributors:
  * Date: March 24, 2020
- * ------------------------
+ * ------------------------------------------------------------------------------------------------
  * Purpose: Make a GameObject holding a child GameObject canvas follow an object. 
+ * 
  * Changelog:
  * April 17th, 2020
  * ------------------------------------------------------------------------------------------------
@@ -23,7 +24,7 @@ public class UI_CanvasFollowObject : MonoBehaviour
 
     [Header("Relative Scaling")]
     [Tooltip("Set the scale of the UI object")]
-    public Vector3 scale;
+    public Vector3 scale;   // To implement
 
     [Header("GameObjects")]
     public Canvas indoorCanvas;

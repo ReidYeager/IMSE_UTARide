@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -3501,6 +3501,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.18
       objectReference: {fileID: 0}
+    - target: {fileID: 114400655283542936, guid: 39868262e399a4c48bf3739708613d2b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39868262e399a4c48bf3739708613d2b, type: 3}
 --- !u!4 &698208570 stripped
@@ -4082,6 +4087,11 @@ PrefabInstance:
     - target: {fileID: 111727103889308754, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_PlayAutomatically
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114400655283542936, guid: 39868262e399a4c48bf3739708613d2b,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4757,6 +4767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308997634616987250, guid: 50e384d2ee821ca41b5599db838ec4ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8752748939495606116, guid: 50e384d2ee821ca41b5599db838ec4ab,
         type: 3}

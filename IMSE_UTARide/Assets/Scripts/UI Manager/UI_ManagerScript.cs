@@ -1,13 +1,21 @@
 ﻿/* Author: Jonah Bui
  * Contributors:
  * Date: March 24, 2020
- * ------------------------
+ * ------------------------------------------------------------------------------------------------
  * Purpose: Control the UI elements functions, appearance, and to maintain them in a single 
  * controlled environment.
  * 
  * Changes:
- * May 18th, 2020:
+ * May 18, 2020:
+ * ------------------------------------------------------------------------------------------------
  *  - Removed functions such as user controls for tilt, hiding menus, and update documentation.
+ *  
+ * May 29, 2020:
+ * ------------------------------------------------------------------------------------------------
+ *  - Added two gameobject references to indoor canvas gameobject and outdoor canvas gameobject.
+ *    Also made a list for the canvases contained in each of those gameobjects.
+ *  - Depending on the current active scene, the indoor and outdoor canvases will be activated.
+ *  - Updated CloseApp() and OpenApp() functions to utilize the new canvas gameobjects.
  */
 
 using System.Collections;
@@ -43,6 +51,10 @@ public class UI_ManagerScript : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    /* Description: Used to update tablet screen display depending on scene.
+     * Parameter(s): none
+     * Returns: nothing
+     */
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         ChangeTabletCanvas(scene);
@@ -55,18 +67,36 @@ public class UI_ManagerScript : MonoBehaviour
      *      An integer used to index into the list "UIs". This is the canvas gameobjec to enable.
      * Return(s): nothing
      */
-    public void OpenApp(List<GameObject> UIs, int appIndex)
+    public void OpenApp(int appIndex)
     {
-        for (int i = 0; i < UIs.Count; i++)
+        if (SceneManager.GetActiveScene().name == "Indoor")
         {
-            Canvas canvas = UIs[i].GetComponent<Canvas>();
-            if (i == appIndex && canvas != null)
+            for (int i = 0; i < indoorUIs.Count; i++)
             {
-                canvas.enabled = true;
+                Canvas canvas = indoorUIs[i].GetComponent<Canvas>();
+                if (i == appIndex && canvas != null)
+                {
+                    canvas.enabled = true;
+                }
+                else if (canvas != null)
+                {
+                    canvas.enabled = false;
+                }
             }
-            else if (canvas != null)
+        }
+        if (SceneManager.GetActiveScene().name == "City")
+        {
+            for (int i = 0; i < outdoorUIs.Count; i++)
             {
-                canvas.enabled = false;
+                Canvas canvas = outdoorUIs[i].GetComponent<Canvas>();
+                if (i == appIndex && canvas != null)
+                {
+                    canvas.enabled = true;
+                }
+                else if (canvas != null)
+                {
+                    canvas.enabled = false;
+                }
             }
         }
     }
@@ -76,20 +106,39 @@ public class UI_ManagerScript : MonoBehaviour
      * Parameters: nothing
      * Return(s): nothing
      */
-    public void CloseApp(List<GameObject> UIs)
+    public void CloseApp()
     {
-        for (int i = 0; i < UIs.Count; i++)
+        if (SceneManager.GetActiveScene().name == "Indoor")
         {
-            Canvas canvas = UIs[i].GetComponent<Canvas>();
-            if (i == 0 && canvas != null)
+            for (int i = 0; i < indoorUIs.Count; i++)
             {
-                canvas.enabled = true;
-            }
-            else if (canvas != null)
-            {
-                canvas.enabled = false;
+                Canvas canvas = indoorUIs[i].GetComponent<Canvas>();
+                if (i == 0 && canvas != null)
+                {
+                    canvas.enabled = true;
+                }
+                else if (canvas != null)
+                {
+                    canvas.enabled = false;
+                }
             }
         }
+        if (SceneManager.GetActiveScene().name == "City")
+        {
+            for (int i = 0; i < outdoorUIs.Count; i++)
+            {
+                Canvas canvas = outdoorUIs[i].GetComponent<Canvas>();
+                if (i == 0 && canvas != null)
+                {
+                    canvas.enabled = true;
+                }
+                else if (canvas != null)
+                {
+                    canvas.enabled = false;
+                }
+            }
+        }
+        Debug.Log($"[IMSE] Active scene: {SceneManager.GetActiveScene().name}");
     }
 
     /* Description: To be used two canvases that are specified to be loaded in their respecitve 
@@ -108,13 +157,13 @@ public class UI_ManagerScript : MonoBehaviour
             {
                 indoorCanvas.enabled = true;
                 outdoorCanvas.enabled = false;
-                CloseApp(indoorUIs);
+                CloseApp();
             }
             else if (scene == SceneManager.GetSceneByBuildIndex(outdoorBuildIndex))
             {
                 indoorCanvas.enabled = false;
                 outdoorCanvas.enabled = true;
-                CloseApp(outdoorUIs);
+                CloseApp();
             }
             else
             {
@@ -124,7 +173,7 @@ public class UI_ManagerScript : MonoBehaviour
         }
         catch
         {
-            Debug.LogError("Error: canvas GameObject could not be retrieved ");
+            Debug.LogError("[IMSE] Error: canvas GameObject could not be retrieved ");
         }
     }
 }

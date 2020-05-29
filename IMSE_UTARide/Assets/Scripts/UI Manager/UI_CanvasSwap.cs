@@ -1,9 +1,11 @@
 ﻿/* Author: Jonah Bui
  * Contributors:
  * Date: May 18th, 2020
- * ------------------------
+ * ------------------------------------------------------------------------------------------------
  * Purpose: Used to hide/ show canvases for use with a list of buttons to click on. Clicking each
  * button should show the according canvas attached to it and hide the rest.
+ * 
+ * Changelogs;
  */
 using System.Collections;
 using System.Collections.Generic;

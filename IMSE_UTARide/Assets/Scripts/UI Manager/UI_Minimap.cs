@@ -1,10 +1,13 @@
 ﻿/* Author: Bishesh Shrestha
  * Contributors: Jonah Bui
  * Date: March 24, 2020
- * ------------------------
+ * ------------------------------------------------------------------------------------------------
  * Purpose: Make a list of GameObjects containing canvases follow an object.
+ * 
  * Changelog: 
- * - March 23rd: added an option for a fixed minimap camera or one that follows the player
+ * March 23, 2020
+ * ------------------------------------------------------------------------------------------------
+ * - Added an option for a fixed minimap camera or one that follows the player
  */
 using System.Collections;
 using System.Collections.Generic;

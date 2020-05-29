@@ -1,7 +1,7 @@
 ﻿/* Author: Jonah Bui
  * Contributors:
  * Date: February 26, 2020
- * ------------------------
+ * ------------------------------------------------------------------------------------------------
  * Purpose: Moves a GUI game object to follow a player game object while also keeping the UI 
  * transformed in offset position.
  * Changelog:

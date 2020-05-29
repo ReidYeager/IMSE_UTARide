@@ -1,8 +1,9 @@
 ﻿/* Author: Jonah Bui
  * Contributors:
  * Date: March 27, 2020
- * ------------------------
- * Purpose: Bindings for each of the possible inputs. Easy to change binds in a centralized file
+ * ------------------------------------------------------------------------------------------------
+ * Purpose: Bindings for each of the possible inputs. Easy to change binds in a centralized file.
+ * 
  * Changelog:
  */
 using UnityEngine;

@@ -60,6 +60,7 @@ crashlytics-build.properties
 
 # Affinity photo files
 *.afphoto
+*.aphoto.meta
 
 # Info files
 *.pdf

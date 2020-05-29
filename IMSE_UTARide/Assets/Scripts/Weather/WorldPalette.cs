@@ -7,6 +7,4 @@ public class WorldPalette : ScriptableObject
 {
     public Gradient[] skyGradients;
     public ParticleSystem particle;
-
-
 }
