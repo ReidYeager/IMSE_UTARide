@@ -6,8 +6,9 @@
  * player.
  * 
  * Changelog:
- * 
- * 
+ *  June 1, 2020
+ *      Fixed issue where player does not consistently spawn in the same place due to colliders in
+ *      the loaded scene. Fixed by disabling collider on load up.
  * ------------------------------------------------------------------------------------------------
  * To-Do:
  * - The player camera glitches when transitioning between scenes. Consider disabling the player
@@ -22,6 +23,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
     private GameObject player;
+    private GameObject ovrPlayer;
 
     // Used to get player on scene load
     private void OnEnable()
@@ -42,33 +44,38 @@ public class PlayerManager : MonoBehaviour
      */
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Get the player
-        if (scene.name == "Indoor")
+        // Disable player gravity to prevent free fall and disable collider so that player does
+        // not collide with any scene objects on load up causing position to be displaced.
+        OVRPlayerController controller = ovrPlayer.GetComponent<OVRPlayerController>();
+        CharacterController charController = ovrPlayer.GetComponent<CharacterController>();
+        try
         {
-            Debug.Log("[IMSE] Indoor scene loaded.");
-            player = GameObject.FindGameObjectWithTag("Player");
-            player.transform.position = new Vector3(0f, 1f, -8f);
-            // Need player to persist since multiple OVR GameObjects loaded asynchronously may
-            // cause errors.
-            if (player != null)
+            controller.GravityModifier = 0f;
+            controller.Acceleration = 0.1f;
+            controller.Damping = 0.3f;
+            charController.enabled = false;
+            // Set new active scene so that UIs know which canvas do display.
+            // Must set active here since the scene must be fully loaded to set as active.
+            if (scene.name == "Indoor")
             {
-                Debug.Log("[IMSE] Player found.");
-                DontDestroyOnLoad(player);
+                SceneManager.SetActiveScene(scene);
+                Debug.Log("[IMSE] Indoor scene loaded.");
+                this.transform.position = new Vector3(0f, 2f, -9f);
             }
-            else
+            if (scene.name == "City")
             {
-                Debug.LogWarning("[IMSE] Player could not be found.");
+                SceneManager.SetActiveScene(scene);
+                Debug.Log("[IMSE] Indoor scene loaded.");
+                this.transform.position = new Vector3(-4f, 4f, 0f);       
             }
+            ovrPlayer.transform.localPosition = Vector3.zero;
+            charController.enabled = true;
+            controller.GravityModifier = 1f;
         }
-        // Position player
-        if (scene.name == "City")
+        catch
         {
-            player.transform.position = new Vector3(-4f, 1f, 0f);
+            Debug.LogWarning("[IMSE] Could not find OVRPlayerController or CharacterController.");
         }
-
-        // Set new active scene so that UIs know which canvas do display.
-        // Must set active here since the scene must be fully loaded to set as active.
-        SceneManager.SetActiveScene(scene);
     }
 
     private void Awake()
@@ -81,6 +88,19 @@ public class PlayerManager : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+        }
+    }
+    private void Start()
+    {
+        player = this.gameObject.transform.GetChild(0).gameObject;
+        if (player == null)
+        {
+            Debug.LogError("[IMSE] The player object in UI_GameObjects+Player could not be found.");
+        }
+        ovrPlayer = player.transform.GetChild(0).gameObject;
+        if (player == null)
+        {
+            Debug.LogError("[IMSE] The ovrPlayer object in UI_GameObjects+Player could not be found.");
         }
     }
 }
