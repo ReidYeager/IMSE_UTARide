@@ -57,8 +57,6 @@ public class WorldState : MonoBehaviour
     {
         if (instance == null)
         {
-            // Dont destroy to persist the WorldState between different scenes
-            DontDestroyOnLoad(this.gameObject);
             instance = this;
         }
 
@@ -121,6 +119,7 @@ public class WorldState : MonoBehaviour
         {
             SetTimeOfDay();
         }
+        Debug.Log($"[IMSE] Current active scene is {SceneManager.GetActiveScene().name}");
     }
 
 
@@ -150,10 +149,7 @@ public class WorldState : MonoBehaviour
                 // Add stuff here
                 break;
             case DayTimes.NIGHT:
-                RenderSettings.ambientLight = worldWeatherPalettes[2].skyGradients[0].Evaluate(0.25f);
-                RenderSettings.ambientSkyColor = worldWeatherPalettes[2].skyGradients[0].Evaluate(0.25f);
-                RenderSettings.ambientEquatorColor = worldWeatherPalettes[2].skyGradients[0].Evaluate(0.25f);
-                RenderSettings.ambientGroundColor = worldWeatherPalettes[2].skyGradients[0].Evaluate(1f);
+                RenderSettings.skybox = worldWeatherPalettes[2].skybox;
                 break;
             default:
                 break;

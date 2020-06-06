@@ -5304,7 +5304,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Order Ride
+  m_Text: Return Home
 --- !u!1 &2102398615072300451
 GameObject:
   m_ObjectHideFlags: 0
@@ -5901,7 +5901,7 @@ GameObject:
   - component: {fileID: 6830521637147460226}
   m_Layer: 0
   m_Name: Button_Ride_Order
-  m_TagString: Untagged
+  m_TagString: OrderRide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6000,29 +6000,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6317129284734307501}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6715721995185524031}
-        m_MethodName: LoadSceneViaButton
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6715721995185524031}
-        m_MethodName: UnloadSceneViaButton
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2342232915862391059
 GameObject:
   m_ObjectHideFlags: 0
@@ -7782,7 +7760,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3429613068225781884}
-  - component: {fileID: 6133668874388886931}
   m_Layer: 0
   m_Name: UI_GameObjects+Player
   m_TagString: Player
@@ -7808,18 +7785,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6133668874388886931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3841811886888183487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7d0b8ed97b37a64abee8c52f26f6860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3850578902622018749
 GameObject:
   m_ObjectHideFlags: 0
@@ -8288,7 +8253,7 @@ GameObject:
   - component: {fileID: 8234262501458537682}
   - component: {fileID: 5099461155794287998}
   m_Layer: 0
-  m_Name: App_Ride
+  m_Name: App_ReturnHome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10386,7 +10351,7 @@ GameObject:
   - component: {fileID: 7181271931747759498}
   - component: {fileID: 4028520449427239579}
   m_Layer: 0
-  m_Name: Button_2_Ride
+  m_Name: Button_2_ReturnHome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10438,7 +10403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eaaa8d49941e4db41b4f4b2e3542bcb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ffab45cd9ac5b843a4283fd851391d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10487,13 +10452,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5308997634351039868}
-        m_MethodName: OpenApp
-        m_Mode: 3
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -11345,6 +11310,7 @@ GameObject:
   - component: {fileID: 429871683022413478}
   - component: {fileID: 5435965416943882676}
   - component: {fileID: 3560880937892072537}
+  - component: {fileID: 5010679627277862896}
   m_Layer: 0
   m_Name: OVRPlayerController
   m_TagString: Untagged
@@ -11441,6 +11407,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71d1996d67004241a3b69960856ffcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5010679627277862896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5308997634616987250}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf162022e230bb745ab2ec48cd357f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraRig: {fileID: 7232345890317058455}
+  EnableCollision: 0
+  CollideLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  MaxFade: 1
+  FadeMinDistance: 0.25
+  PreferredHeight: 1
+  FadeMaxDistance: 0.35
 --- !u!1 &5308997634851897859
 GameObject:
   m_ObjectHideFlags: 0
@@ -11503,7 +11490,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &7208651926634357019
 MonoBehaviour:
@@ -19246,7 +19233,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3273621536286244187
 MonoBehaviour:

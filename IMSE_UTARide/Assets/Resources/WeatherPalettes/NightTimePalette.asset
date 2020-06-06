@@ -126,3 +126,4 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   particle: {fileID: 0}
+  skybox: {fileID: 2100000, guid: da54ded9c04118f4db6665c700814321, type: 2}

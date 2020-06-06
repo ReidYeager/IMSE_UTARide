@@ -6,9 +6,13 @@
  * player.
  * 
  * Changelog:
+ *  June 5, 2020
+ *      - This script should now be held in the WorldManager gameObject found in the scene Persistent.
+ *        It will create a player gameobject when the scene loads instead of having to add one to the
+ *        scene manually. Also redcues management of the player when the scene loads.
  *  June 1, 2020
- *      Fixed issue where player does not consistently spawn in the same place due to colliders in
- *      the loaded scene. Fixed by disabling collider on load up.
+ *      - Fixed issue where player does not consistently spawn in the same place due to colliders in
+ *        the loaded scene. Fixed by disabling collider on load up.
  * ------------------------------------------------------------------------------------------------
  * To-Do:
  * - The player camera glitches when transitioning between scenes. Consider disabling the player
@@ -18,14 +22,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
+
+    // Assign the player prefab "UI_GameObjects+Player"
+    public GameObject playerPrefab;
+
+    // The gameObject holoding the OVRPlayerController. Used to modify player's location
     private GameObject player;
+    // The gameObject OVRPlayerController. Used to control movement.
     private GameObject ovrPlayer;
 
-    // Used to get player on scene load
+    private OVRPlayerController ovrController;
+    private CharacterController charController;
+
+    private UI_ManagerScript UIM;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------
+    // Player On Load-Scene Management
+    // --------------------------------------------------------------------------------------------
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -44,63 +76,174 @@ public class PlayerManager : MonoBehaviour
      */
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Disable player gravity to prevent free fall and disable collider so that player does
-        // not collide with any scene objects on load up causing position to be displaced.
-        OVRPlayerController controller = ovrPlayer.GetComponent<OVRPlayerController>();
-        CharacterController charController = ovrPlayer.GetComponent<CharacterController>();
-        try
+        if (player != null)
+            FreePlayer(player);
+        // Set new active scene so that UIs know which canvas do display.
+        // Must set active here since the scene must be fully loaded to set as active.
+        if (scene.name == "Indoor")
         {
-            controller.GravityModifier = 0f;
-            controller.Acceleration = 0.1f;
-            controller.Damping = 0.3f;
-            charController.enabled = false;
-            // Set new active scene so that UIs know which canvas do display.
-            // Must set active here since the scene must be fully loaded to set as active.
-            if (scene.name == "Indoor")
+            Debug.Log("[IMSE] Indoor scene loaded.");
+            InstantiatePlayer();
+            try
             {
-                SceneManager.SetActiveScene(scene);
-                Debug.Log("[IMSE] Indoor scene loaded.");
-                this.transform.position = new Vector3(0f, 2f, -9f);
+                player.transform.position = new Vector3(0f, 1f, -9f);
+                ovrPlayer.SetActive(true);
+                ovrPlayer.transform.localPosition = Vector3.zero;
             }
-            if (scene.name == "City")
+            catch
             {
-                SceneManager.SetActiveScene(scene);
-                Debug.Log("[IMSE] Indoor scene loaded.");
-                this.transform.position = new Vector3(-4f, 4f, 0f);       
+                Debug.LogError("[IMSE] The player/ ovrPlayer could not be referenced.");
             }
-            ovrPlayer.transform.localPosition = Vector3.zero;
-            charController.enabled = true;
-            controller.GravityModifier = 1f;
+
         }
-        catch
+        if (scene.name == "City")
         {
-            Debug.LogWarning("[IMSE] Could not find OVRPlayerController or CharacterController.");
+            Debug.Log("[IMSE] Indoor scene loaded.");
+            InstantiatePlayer();
+            try
+            {
+                player.transform.position = new Vector3(-4f, 4f, 0f);
+                ovrPlayer.SetActive(true);
+                ovrPlayer.transform.localPosition = Vector3.zero;
+            }
+            catch
+            {
+                Debug.LogError("[IMSE] The player/ ovrPlayer could not be referenced.");
+            }
         }
     }
 
-    private void Awake()
+    // --------------------------------------------------------------------------------------------
+    // Player Management Functions
+    // --------------------------------------------------------------------------------------------
+
+    /* Description: Creates a new player gameobject and assigns the necessary variables needed to
+     * maange it within this script.
+     * Parameter(s): nothing
+     * Returns: 
+     *      newPlayer : GameObject
+     *          A prefab of the player gameObject. Should be "UI_GameObjects+Player" that is 
+     *          assigned in the editor.
+     */
+    private GameObject InstantiatePlayer()
     {
-        if (Instance == null)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
-    private void Start()
-    {
-        player = this.gameObject.transform.GetChild(0).gameObject;
+        GameObject newPlayer = Instantiate(playerPrefab);
+
+        // Find all the necessary components and assign them to private variables to be called on later.
+        player = newPlayer.transform.GetChild(0).gameObject;
         if (player == null)
         {
             Debug.LogError("[IMSE] The player object in UI_GameObjects+Player could not be found.");
+            return null;
         }
+
         ovrPlayer = player.transform.GetChild(0).gameObject;
-        if (player == null)
+        if (ovrPlayer == null)
         {
             Debug.LogError("[IMSE] The ovrPlayer object in UI_GameObjects+Player could not be found.");
+            return null;
         }
+                      
+        ovrController = ovrPlayer.GetComponent<OVRPlayerController>();
+        if (ovrController == null)
+        {
+            Debug.LogError("[IMSE] The ovrController object in UI_GameObjects+Player could not be found.");
+            return null;
+        }
+
+        charController = ovrPlayer.GetComponent<CharacterController>();
+        if (charController == null)
+        {
+            Debug.LogError("[IMSE] The charController object in UI_GameObjects+Player could not be found.");
+            return null;
+        }
+        UIM = newPlayer.transform.GetChild(1).GetChild(1).GetComponent<UI_ManagerScript>();
+        if (UIM == null)
+        {
+            Debug.LogError("[IMSE] The UIM object in UI_GameObjects+Player could not be found.");
+            return null;
+        }
+    
+        // Set the buttons for scene loading in the tablet
+        Button orderRide = newPlayer.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetComponent<Button>();
+        if (orderRide != null)
+        {
+            orderRide.onClick.AddListener(() => LoadSceneViaButton(2));
+            orderRide.onClick.AddListener(() => UnloadSceneViaButton(1));
+        }
+        else
+        {
+            Debug.LogError("[IMSE] Order Ride button could not be found. Cannot assign functions.");
+            return null;
+        }
+        Button returnHome = newPlayer.transform.GetChild(1).GetChild(0).GetChild(1).GetChild(0).GetChild(3).GetComponent<Button>();
+        if (returnHome != null)
+        {
+            returnHome.onClick.AddListener(() => LoadSceneViaButton(1));
+        }
+        else
+        {
+            Debug.LogError("[IMSE] Return Home button could not be found. Cannot assign functions..");
+            return null;
+        }
+        return newPlayer;
+    }
+
+    private void FreePlayer(GameObject player)
+    {
+        Destroy(player);
+        ovrPlayer = null;
+        ovrController = null;
+        charController = null;
+        UIM = null;
+    }
+
+    public void LoadSceneViaButton(int index)
+    {
+        player.SetActive(false);
+        FreePlayer(player);
+        // Consider adding a message saying a scene is loading
+        if (index == 1)
+        { 
+            
+        }
+
+
+        WorldState.instance.LoadScene(index);
+        WorldState.instance.SetTimeOfDay();
+    }
+
+    public void UnloadSceneViaButton(int index)
+    {
+        WorldState.instance.UnloadScene(index);
+    }
+
+
+    // --------------------------------------------------------------------------------------------
+    // Getters/ setters
+    // --------------------------------------------------------------------------------------------
+    public GameObject Player
+    {
+        get { return player; }
+    }
+
+    public GameObject OVRPlayer
+    {
+        get { return ovrPlayer; }
+    }
+
+    public OVRPlayerController OVRController
+    {
+        get { return ovrController; }
+    }
+
+    public CharacterController CharController
+    {
+        get { return charController; }
+    }
+
+    public UI_ManagerScript UIMS
+    {
+        get { return UIM; }
     }
 }

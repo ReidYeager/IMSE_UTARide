@@ -41,23 +41,9 @@ public class UI_ManagerScript : MonoBehaviour
     public List<GameObject> indoorUIs = new List<GameObject>();
     public List<GameObject> outdoorUIs = new List<GameObject>();
 
-    private void OnEnable()
+    private void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    /* Description: Used to update tablet screen display depending on scene.
-     * Parameter(s): none
-     * Returns: nothing
-     */
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        ChangeTabletCanvas(scene);
+        ChangeTabletCanvas(SceneManager.GetActiveScene());
     }
 
     /* Description: To be used by a button. Using a list provided, enables the selected GameObject
