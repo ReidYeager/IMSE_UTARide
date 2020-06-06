@@ -6,16 +6,18 @@
  * controlled environment.
  * 
  * Changes:
- * May 18, 2020:
- * ------------------------------------------------------------------------------------------------
- *  - Removed functions such as user controls for tilt, hiding menus, and update documentation.
- *  
  * May 29, 2020:
  * ------------------------------------------------------------------------------------------------
  *  - Added two gameobject references to indoor canvas gameobject and outdoor canvas gameobject.
  *    Also made a list for the canvases contained in each of those gameobjects.
  *  - Depending on the current active scene, the indoor and outdoor canvases will be activated.
  *  - Updated CloseApp() and OpenApp() functions to utilize the new canvas gameobjects.
+ *  
+ * May 18, 2020:
+ * ------------------------------------------------------------------------------------------------
+ *  - Removed functions such as user controls for tilt, hiding menus, and update documentation.
+ *  
+
  */
 
 using System.Collections;

@@ -15,8 +15,7 @@
  *        the loaded scene. Fixed by disabling collider on load up.
  * ------------------------------------------------------------------------------------------------
  * To-Do:
- * - The player camera glitches when transitioning between scenes. Consider disabling the player
- *   until the player is fully loaded in. Or find some other method.
+ * - NullReference Error when player changes scene. Fix
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -41,6 +40,9 @@ public class PlayerManager : MonoBehaviour
     private CharacterController charController;
 
     private UI_ManagerScript UIM;
+
+    // Editor values
+    [SerializeField] private int e_appIndex;
 
     private void Awake()
     {
@@ -208,7 +210,6 @@ public class PlayerManager : MonoBehaviour
             
         }
 
-
         WorldState.instance.LoadScene(index);
         WorldState.instance.SetTimeOfDay();
     }
@@ -218,7 +219,6 @@ public class PlayerManager : MonoBehaviour
         WorldState.instance.UnloadScene(index);
     }
 
-
     // --------------------------------------------------------------------------------------------
     // Getters/ setters
     // --------------------------------------------------------------------------------------------
@@ -226,22 +226,18 @@ public class PlayerManager : MonoBehaviour
     {
         get { return player; }
     }
-
     public GameObject OVRPlayer
     {
         get { return ovrPlayer; }
     }
-
     public OVRPlayerController OVRController
     {
         get { return ovrController; }
     }
-
     public CharacterController CharController
     {
         get { return charController; }
     }
-
     public UI_ManagerScript UIMS
     {
         get { return UIM; }

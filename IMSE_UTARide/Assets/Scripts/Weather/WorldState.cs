@@ -39,17 +39,13 @@ public class WorldState : MonoBehaviour
         EVENING,
         NIGHT
     };
-    [SerializeField]
-    private DayTimes currentTime = DayTimes.NOON;
+    [Header("Time Customization")]
+    [SerializeField] private DayTimes currentTime = DayTimes.NOON;
     public DayTimes CurrentTime
     {
         get { return currentTime;  }
         set { Debug.Log($"[IMSE] Current time: {currentTime}"); currentTime = value; }
     }
-    // Jonah => May not need float value for specific times of days
-    // Number of seconds starting at midnight(0.0f) to 11:59:59 (86399)
-    public float timeOfDay { get; private set; } = 0.0f;
-
 
 //===============================================\\
 //===============================================//
@@ -134,10 +130,15 @@ public class WorldState : MonoBehaviour
     // TIME
     // ==============================================
 
+    // Sunny palette expected @ index 0
+    // Rainy palette expected @ index 1
+    // Night palette expected @ index 2
+    // More TBA...
     public void SetTimeOfDay()
     {
+        // Get new colors from weather palette
         // Set lighting depending on time of day provided by currentTime
-        switch(currentTime)
+        switch (currentTime)
         {
             case DayTimes.MORNING:
                 // Add stuff here
@@ -150,11 +151,10 @@ public class WorldState : MonoBehaviour
                 break;
             case DayTimes.NIGHT:
                 RenderSettings.skybox = worldWeatherPalettes[2].skybox;
+                // Need to modify lighting also
                 break;
             default:
                 break;
         }
-        // Get new colors from weather palette
-        // Set skybox from weather palette
     }
 }
