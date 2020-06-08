@@ -1,27 +1,45 @@
-﻿using System.Collections;
+﻿/* Author: Jonah Bui
+ * Contributors:
+ * Date: June 6, 2020
+ * ------------------------------------------------------------------------------------------------
+ * Purpose: 
+ * ------------------------------------------------------------------------------------------------
+ * Changelog:
+ * 
+ * June 7, 2020
+ * ------------------------------------------------------------------------------------------------
+ * - Updated TutorialManager to work with new Slide gameObject.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
-    // List of text and images to display to user. Make sure the lists elements correlate with one
-    // another. Ex: at index 1 the image and text are meant to be displayed together. It is alright
-    // to leave the image list blank but not the string list. The image list will be filled with 
-    // null images to match the amount of texts elements.
-    public List<string> dialogue = new List<string>();
-    public List<Sprite> images = new List<Sprite>();
+    public enum Transition
+    { 
+        FORWARD,
+        BACKWARD
+    };
 
-    // The text UI element used to display text to the user.
-    public Text displayText;
-    // The image UI element used to display an image to the user.
-    public Image displayImage;
+    public Vector3 worldPosition;
+    public List<GameObject> slideGOs = new List<GameObject>();
+    public SlideColorScheme scheme;
+
+    public string textToParse;
+
+    [Tooltip("The gameObject to place all the slides to create")]
+    public GameObject outputSlides;
+   
     // Use to keep track of what text/image to display.
     private int currentSlideIndex;
 
-    // To add later
-    // public bool loadDialogueFromFile;
-
+    // Editor vars
+    public int slideCount;
+    public bool toggleSlides;
+    public string textDelimiter;
 
     /* Description: Use to set the text and image of a canvas.
      * Parameter(s): 
@@ -31,10 +49,24 @@ public class TutorialManager : MonoBehaviour
      *      An image to display to the user
      * Return(s): nothing
      */
-    private void SetSlide(string text, Sprite image)
+    private void ChangeSlide(GameObject slideGO, Transition t)
     {
-        displayText.text = text;
-        displayImage.sprite = image;
+        if (t == Transition.FORWARD)
+        {
+            if (currentSlideIndex + 1 < slideGOs.Count)
+            {
+                currentSlideIndex++;
+                EnableSlide(slideGOs, currentSlideIndex);
+            }
+        }
+        else if (t == Transition.BACKWARD)
+        {
+            if (currentSlideIndex - 1 >= 0)
+            {
+                currentSlideIndex--;
+                EnableSlide(slideGOs, currentSlideIndex);
+            }
+        }
     }
 
     private void Awake()
@@ -44,34 +76,42 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        // Display the first elements when the scene is loaded up
-        if (dialogue.Count > 0 && images.Count > 0)
-            SetSlide(dialogue[0], images[0]);
-        else
-            Debug.LogWarning("[IMSE] Dialogue and images are missing from tutorial display.");
-        if (dialogue.Count > images.Count)
-        {
-            Debug.LogWarning("[IMSE] Dialgoue does not have the correct amount of images to display with.");
-            int toAdd = dialogue.Count - images.Count;
-            // If there is more text than dialogue, fill in the list of images to match the count
-            // of the text list.
-            for (int i = 0; i < toAdd; i++)
-            {
-                images.Add(null);
-            }
-            SetSlide(dialogue[0], images[0]);
-        }
-        currentSlideIndex++;
+        EnableSlide(slideGOs, 0);
     }
 
     void Update()
     {
         // Transition to the next text of the tutorial if the player clicks A on the OVR controller
-        if ((OVRInput.GetDown(UI_InputMapping.OVR_A) || Input.GetKeyDown(KeyCode.Escape)) && currentSlideIndex < dialogue.Count)
+        if ((OVRInput.GetDown(UI_InputMapping.OVR_A) || Input.GetKeyDown(KeyCode.Escape)))
         {
-            Debug.Log($"[IMSE] Tutorial index is {currentSlideIndex}");
-            SetSlide(dialogue[currentSlideIndex], images[currentSlideIndex]);
-            currentSlideIndex++;
+            try
+            {
+                ChangeSlide(slideGOs[currentSlideIndex], Transition.FORWARD);
+                Debug.Log($"[IMSE] Tutorial index is now {currentSlideIndex}");
+            }
+            catch
+            {
+                Debug.LogWarning($"[IMSE] Slide could not be retrieved.");
+            }
+        }
+    }
+
+    private void EnableSlide(List<GameObject> slideGOs, int index)
+    {
+        for (int i = 0; i < slideGOs.Count; i++)
+        {
+            try
+            {
+                if(index == i)
+                    slideGOs[i].GetComponent<Slide>().enabled = true;
+                else
+                    slideGOs[i].GetComponent<Slide>().enabled = false;
+            }
+            catch
+            {
+                Debug.LogWarning($"[IMSE] Slide could not be retrieved.");
+            }
+
         }
     }
 }
