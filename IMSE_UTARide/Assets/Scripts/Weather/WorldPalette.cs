@@ -6,6 +6,6 @@ using UnityEngine;
 public class WorldPalette : ScriptableObject
 {
     public Gradient[] skyGradients;
-    public ParticleSystem particle;
+    public GameObject particlePrefab;
     public Material skybox;
 }

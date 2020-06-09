@@ -7,11 +7,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class WorldState : MonoBehaviour
 {
     public static WorldState instance { get; private set; }
+
+    // PLAYER
+    // ==========================================
+    public Transform PlayerTransform;
 
     // SCENES
     // ==========================================
@@ -23,12 +28,16 @@ public class WorldState : MonoBehaviour
     // WEATHER
     // ==========================================
     public enum weatherStates {
-        sunny = 1,
-        rainy = 2
+        sunny,
+        rainy,
+        night
     }
 
-    public weatherStates currentWeather { get; set; } = weatherStates.sunny;
+    public weatherStates currentWeather { get; set; } = weatherStates.rainy;
+    public WorldPalette currentWeatherPallete = null;
     public WorldPalette[] worldWeatherPalettes;
+
+    private GameObject particleObject;
 
     // TIME OF DAY
     // ==========================================
@@ -124,8 +133,29 @@ public class WorldState : MonoBehaviour
     public void SetWeather(weatherStates _weather)
     {
         currentWeather = _weather;
-        Debug.Log($"Current weather now {currentWeather}");
-    }   
+        currentWeatherPallete = worldWeatherPalettes[(int)_weather];
+
+        Debug.Log($"Current weather now {(int)_weather}");
+        Debug.Log($"Current weather now {worldWeatherPalettes[(int)_weather].name}");
+
+
+        if (particleObject != null)
+        {
+            Destroy(particleObject);
+        }
+
+        if (currentWeatherPallete.particlePrefab == null)
+            return;
+
+        if (PlayerTransform == null)
+        {
+            particleObject = GameObject.Instantiate(currentWeatherPallete.particlePrefab);
+        }
+        else
+        {
+            particleObject = GameObject.Instantiate(currentWeatherPallete.particlePrefab, PlayerTransform);
+        }
+    }
 
     // TIME
     // ==============================================
