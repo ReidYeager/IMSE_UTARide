@@ -40,6 +40,7 @@ public class PlayerManager : MonoBehaviour
     private CharacterController charController;
 
     private UI_ManagerScript UIM;
+    private UI_VehicleSelection UIV;
 
     // Editor values
     [SerializeField] private int e_appIndex;
@@ -165,27 +166,10 @@ public class PlayerManager : MonoBehaviour
             Debug.LogError("[IMSE] The UIM object in UI_GameObjects+Player could not be found.");
             return null;
         }
-    
-        // Set the buttons for scene loading in the tablet
-        Button orderRide = newPlayer.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetComponent<Button>();
-        if (orderRide != null)
+        UIV = newPlayer.transform.GetChild(1).GetChild(1).GetComponent<UI_VehicleSelection>();
+        if (UIV == null)
         {
-            orderRide.onClick.AddListener(() => LoadSceneViaButton(2));
-            orderRide.onClick.AddListener(() => UnloadSceneViaButton(1));
-        }
-        else
-        {
-            Debug.LogError("[IMSE] Order Ride button could not be found. Cannot assign functions.");
-            return null;
-        }
-        Button returnHome = newPlayer.transform.GetChild(1).GetChild(0).GetChild(1).GetChild(0).GetChild(3).GetComponent<Button>();
-        if (returnHome != null)
-        {
-            returnHome.onClick.AddListener(() => LoadSceneViaButton(1));
-        }
-        else
-        {
-            Debug.LogError("[IMSE] Return Home button could not be found. Cannot assign functions..");
+            Debug.LogError("[IMSE] The UIV object in UI_GameObjects+Player could not be found.");
             return null;
         }
         return newPlayer;
@@ -204,7 +188,8 @@ public class PlayerManager : MonoBehaviour
     {
         player.SetActive(false);
         FreePlayer(player);
-        // Consider adding a message saying a scene is loading
+        // Consider adding a message saying a scene is loading to indicate location where ride will
+        // spawn
         if (index == 1)
         { 
             
@@ -241,5 +226,9 @@ public class PlayerManager : MonoBehaviour
     public UI_ManagerScript UIMS
     {
         get { return UIM; }
+    }
+    public UI_VehicleSelection UIVS
+    {
+        get { return UIV; }
     }
 }

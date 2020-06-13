@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731703, g: 0.13414727, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -143,11 +143,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 0}
+  currentWeatherPallete: {fileID: 0}
   worldWeatherPalettes:
   - {fileID: 11400000, guid: 4efdf6f5fd2754f49bab0049e939a61e, type: 2}
   - {fileID: 11400000, guid: 2f771499ab9c6ca4fb3367cbe6829577, type: 2}
   - {fileID: 11400000, guid: 354ce98bd2ff5a14ba3a42c8145bd7a9, type: 2}
-  currentTime: 1
+  - {fileID: 11400000, guid: 8a618945329608b408dfe98fbf15c812, type: 2}
+  - {fileID: 11400000, guid: 462106c3b5d7ba24f940ace71dba1171, type: 2}
+  - {fileID: 11400000, guid: 6a323af7414007a469d89d8c7d4a91ab, type: 2}
+  currentTime: 0
 --- !u!4 &1629342900
 Transform:
   m_ObjectHideFlags: 0

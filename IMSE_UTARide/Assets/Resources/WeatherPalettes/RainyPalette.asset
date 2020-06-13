@@ -125,6 +125,4 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  particlePrefab: {fileID: 1000010302070858, guid: d0c0b49979d372942ae5a964d9364111,
-    type: 3}
-  skybox: {fileID: 0}
+  particle: {fileID: 0}
