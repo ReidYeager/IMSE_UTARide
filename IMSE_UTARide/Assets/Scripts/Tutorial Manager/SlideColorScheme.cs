@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Slide Color Scheme")]
+[CreateAssetMenu(menuName = "IMSE/Slide Color Scheme")]
 public class SlideColorScheme : ScriptableObject
 {
     public Color mainColor = new Color(1f, 1f, 1f, 1f);

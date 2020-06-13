@@ -133,6 +133,9 @@ public class WorldState : MonoBehaviour
     // Sunny palette expected @ index 0
     // Rainy palette expected @ index 1
     // Night palette expected @ index 2
+    // Morning palette expected @index 3
+    // Noon palette expected @ index 4
+    // Evening palette expected @ index 5
     // More TBA...
     public void SetTimeOfDay()
     {
@@ -141,13 +144,13 @@ public class WorldState : MonoBehaviour
         switch (currentTime)
         {
             case DayTimes.MORNING:
-                // Add stuff here
+                RenderSettings.skybox = worldWeatherPalettes[3].skybox;
                 break;
             case DayTimes.NOON:
-                // Add stuff here
+                RenderSettings.skybox = worldWeatherPalettes[4].skybox;
                 break;
             case DayTimes.EVENING:
-                // Add stuff here
+                RenderSettings.skybox = worldWeatherPalettes[5].skybox;
                 break;
             case DayTimes.NIGHT:
                 RenderSettings.skybox = worldWeatherPalettes[2].skybox;

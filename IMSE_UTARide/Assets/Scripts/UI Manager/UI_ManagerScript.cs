@@ -19,7 +19,7 @@
  *  
 
  */
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,9 +43,21 @@ public class UI_ManagerScript : MonoBehaviour
     public List<GameObject> indoorUIs = new List<GameObject>();
     public List<GameObject> outdoorUIs = new List<GameObject>();
 
+    public Button OrderRide;
+    public Button ReturnHome;
+
     private void Start()
     {
         ChangeTabletCanvas(SceneManager.GetActiveScene());
+
+        OrderRide.onClick.AddListener(()=> { PlayerManager.Instance.LoadSceneViaButton(2); });
+        ReturnHome.onClick.AddListener(() => { PlayerManager.Instance.LoadSceneViaButton(1); });
+    }
+
+    private void OnDestroy()
+    {
+        OrderRide.onClick.RemoveListener(() => { PlayerManager.Instance.LoadSceneViaButton(2); });
+        ReturnHome.onClick.RemoveListener(() => { PlayerManager.Instance.LoadSceneViaButton(1); });
     }
 
     /* Description: To be used by a button. Using a list provided, enables the selected GameObject
