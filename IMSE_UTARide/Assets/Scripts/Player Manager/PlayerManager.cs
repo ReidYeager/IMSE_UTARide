@@ -45,6 +45,8 @@ public class PlayerManager : MonoBehaviour
     // Editor values
     [SerializeField] private int e_appIndex;
 
+    public bool propBlockades;
+
     private void Awake()
     {
         if (Instance == null)

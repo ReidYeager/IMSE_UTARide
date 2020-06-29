@@ -11,6 +11,7 @@ using UnityEngine;
 [CustomEditor(typeof(PlayerManager))]
 public class PlayerManagerEditor : Editor
 {
+    private bool enableBools;
     public override void OnInspectorGUI()
     {
         //base.OnInspectorGUI();
@@ -18,6 +19,9 @@ public class PlayerManagerEditor : Editor
 
         SerializedProperty m_appIndex = serializedObject.FindProperty("e_appIndex");
         SerializedProperty m_playePrefab = serializedObject.FindProperty("playerPrefab");
+
+        SerializedProperty m_propBlockades = serializedObject.FindProperty("propBlockades");
+
         GUIStyle textfieldStyle = new GUIStyle(EditorStyles.textField);
         PlayerManager pm = (PlayerManager)target;
 
@@ -172,5 +176,12 @@ public class PlayerManagerEditor : Editor
             }
         }
         GUILayout.EndHorizontal();
+
+        enableBools = EditorGUILayout.Foldout(enableBools, "Ride Blockades", true);
+        if (enableBools)
+        {
+            EditorGUILayout.PropertyField(m_propBlockades, true);
+        }
+        serializedObject.ApplyModifiedProperties();
     }
 }

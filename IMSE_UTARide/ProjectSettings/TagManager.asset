@@ -7,8 +7,6 @@ TagManager:
   - Destructor
   - Vehicle
   - OrderRide
-  - projectile
-  - FxTemporaire
   - VehicleSpawnpoint
   layers:
   - Default

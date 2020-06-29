@@ -100,6 +100,16 @@ public class UI_ManagerScript : MonoBehaviour
             }
         }
     }
+    public void SetProps(int props)
+    {
+        switch (props)
+        {
+            case 0:
+                PlayerManager.Instance.propBlockades = true;
+                break;
+        }
+    }
+
 
     /* Description: To be used by a button. Disables all the UI GameObjects except the first one in 
      * the list. Note: the first canvas should be the home screen.
